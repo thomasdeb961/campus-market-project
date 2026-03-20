@@ -1,0 +1,139 @@
+/* public/css/style.css */
+
+/* --- VARIABLES DE COULEURS (Facile à changer !) --- */
+:root {
+    --primary-color: #2563eb; /* Bleu pro */
+    --primary-hover: #1d4ed8;
+    --accent-color: #10b981; /* Vert pour les prix/succès */
+    --danger-color: #ef4444; /* Rouge pour les suppressions */
+    --bg-color: #f8fafc; /* Gris très clair pour le fond */
+    --text-color: #1e293b; /* Gris foncé pour le texte */
+    --card-bg: #ffffff;
+    --radius: 10px;
+}
+
+/* --- STYLES DE BASE --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* Centre le site sur les grands écrans */
+}
+
+h1, h2, h3 {
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+/* --- BOUTONS --- */
+.btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius);
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover { background-color: var(--primary-hover); }
+.btn-green { background-color: var(--accent-color); }
+.btn-green:hover { background-color: #059669; }
+.btn-danger { background-color: var(--danger-color); color: white; }
+
+/* --- FORMULAIRES & RECHERCHE --- */
+.search-bar, form {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.search-bar {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap; /* S'adapte sur mobile */
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* --- GRILLE DES ANNONCES --- */
+.ad-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.ad-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ad-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.ad-card .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin: 10px 0;
+}
+
+.ad-card .category {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+}
+
+.ad-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* En-tête de page */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+}

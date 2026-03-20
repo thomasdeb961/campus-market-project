@@ -3,22 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Les Annonces - Campus Market</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .btn { padding: 10px 15px; background-color: #2980b9; color: white; text-decoration: none; border-radius: 4px; border: none; cursor: pointer; }
-        .btn-green { background-color: #27ae60; }
-        
-        /* Style pour la barre de recherche */
-        .search-bar { background: white; padding: 15px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; gap: 10px; }
-        .search-bar input, .search-bar select { padding: 10px; border: 1px solid #ddd; border-radius: 4px; flex: 1; }
-        
-        .ad-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .ad-card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .price { font-weight: bold; color: #27ae60; font-size: 1.2em; }
-        .category { font-size: 0.8em; color: #7f8c8d; text-transform: uppercase; }
-        .ad-img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;}
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="header">

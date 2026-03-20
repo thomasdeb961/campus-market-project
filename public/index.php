@@ -12,6 +12,8 @@ session_start();
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../src/Controllers/AuthController.php';
 require_once __DIR__ . '/../src/Controllers/AdController.php'; // <-- NOUVEAU !
+require_once __DIR__ . '/../src/Controllers/AdminController.php';
+$adminController = new AdminController($pdo);
 
 // 4. On initialise les contrôleurs en leur passant la connexion PDO
 $authController = new AuthController($pdo);
@@ -51,19 +53,19 @@ switch ($action) {
     case 'delete_ad':
         $adController->delete();
         break;
+    // --- ROUTES ADMIN ---
+    case 'admin_dashboard':
+        $adminController->dashboard();
+        break;
+    case 'admin_delete_ad':
+        $adminController->forceDelete();
+        break;    
 
     // --- ACCUEIL ---
     case 'home':
     default:
-        echo "<h1>Bienvenue sur Campus Market !</h1>";
-        if (isset($_SESSION['user_id'])) {
-            echo "<p style='color:green;'>Tu es connecté !</p>";
-            echo "<a href='index.php?action=ads' style='margin-right: 15px;'>👉 Voir les annonces</a>";
-            echo "<a href='index.php?action=logout'>Se déconnecter</a>";
-        } else {
-            echo "<p><a href='index.php?action=login'>Se connecter</a> | <a href='index.php?action=register'>S'inscrire</a></p>";
-            echo "<br><a href='index.php?action=ads'>Voir les annonces sans se connecter</a>";
-        }
+        // On appelle la nouvelle vue qu'on vient de créer !
+        require_once __DIR__ . '/../views/home.php';
         break;
 }
 ?>
