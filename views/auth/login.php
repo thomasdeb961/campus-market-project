@@ -5,7 +5,6 @@
     <title>Connexion - Campus Market</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* On centre le formulaire au milieu de l'écran */
         body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
         .auth-container { background: var(--card-bg); padding: 40px; border-radius: var(--radius); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
         .auth-container h1 { font-size: 1.8rem; margin-bottom: 20px; color: var(--primary-color); }
