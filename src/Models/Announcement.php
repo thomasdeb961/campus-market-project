@@ -39,8 +39,13 @@ class Announcement {
         return $stmt->fetchAll();
     }
 
+    // ON GARDE UNIQUEMENT CETTE VERSION DE getById (LA PLUS COMPLETE)
     public function getById($id) {
-        $sql = "SELECT * FROM announcements WHERE id = :id";
+        $sql = "SELECT a.*, c.name as category_name, u.email as seller_email 
+                FROM announcements a 
+                JOIN categories c ON a.category_id = c.id 
+                JOIN users u ON a.user_id = u.id
+                WHERE a.id = :id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id' => $id]);
         return $stmt->fetch();
@@ -97,4 +102,3 @@ class Announcement {
         return $stmt->fetchAll();
     }
 }
-?>

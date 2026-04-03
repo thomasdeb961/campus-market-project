@@ -6,6 +6,7 @@ class AdController {
     private $adModel;
 
     public function __construct($pdo) {
+        // Le modèle est initialisé ici une seule fois pour tout le contrôleur
         $this->adModel = new Announcement($pdo);
     }
 
@@ -49,6 +50,7 @@ class AdController {
             $description = htmlspecialchars($_POST['description'] ?? '');
             $price = $_POST['price'] ?? 0;
             $imageUrl = $_POST['image_url'] ?? null; 
+            
             if (empty($title) || empty($description) || empty($price) || empty($categoryId)) {
                 $error = "Veuillez remplir tous les champs obligatoires.";
                 $categories = $this->adModel->getCategories();
@@ -122,6 +124,28 @@ class AdController {
         
         header("Location: index.php?action=ads");
         exit();
+    }
+
+    public function show() {
+        // 1. On récupère l'ID de l'annonce depuis l'URL (?id=...)
+        $id = $_GET['id'] ?? null;
+
+        if (!$id) {
+            header('Location: index.php?action=ads');
+            exit;
+        }
+
+        // 2. On utilise le modèle déjà initialisé par le constructeur !
+        $ad = $this->adModel->getById($id);
+
+        // 3. Si l'annonce n'existe pas, on redirige
+        if (!$ad) {
+            header('Location: index.php?action=ads');
+            exit;
+        }
+
+        // 4. On affiche la page de vue détaillée
+        require_once __DIR__ . '/../../views/ads/show.php';
     }
 }
 ?>

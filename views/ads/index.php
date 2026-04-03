@@ -42,24 +42,31 @@
             </div>
         <?php else: ?>
             <?php foreach ($ads as $ad): ?>
-                <div class="ad-card">
-                    <?php 
-                        $imgUrl = !empty($ad['image_url']) ? htmlspecialchars($ad['image_url']) : 'https://placehold.co/600x400/e2e8f0/64748b?text=Pas+d\'image&font=Poppins';
-                    ?>
-                    <img src="<?= $imgUrl ?>" alt="Image de l'annonce" class="ad-img">
-                    
-                    <h3 style="margin-bottom: 5px; font-size: 1.2rem;"><?= htmlspecialchars($ad['title']) ?></h3>
-                    <p class="category"><?= htmlspecialchars($ad['category_name']) ?></p>
-                    <p class="price"><?= htmlspecialchars($ad['price']) ?> €</p>
-                    <p style="color: #475569; font-size: 0.95rem; margin-bottom: 15px;"><?= nl2br(htmlspecialchars(substr($ad['description'], 0, 100))) ?>...</p>
+                <div class="ad-card" style="position: relative;">
+    <a href="index.php?action=show_ad&id=<?= $ad['id'] ?>" style="display: block; text-decoration: none;">
+        <?php 
+            $imgUrl = !empty($ad['image_url']) ? htmlspecialchars($ad['image_url']) : 'https://placehold.co/600x400/e2e8f0/64748b?text=Pas+d\'image&font=Poppins';
+        ?>
+        <img src="<?= $imgUrl ?>" alt="Image de l'annonce" class="ad-img" style="display: block;">
+    </a>
+    
+    <h3 style="margin-top: 15px; margin-bottom: 5px; font-size: 1.2rem;">
+        <a href="index.php?action=show_ad&id=<?= $ad['id'] ?>" class="ad-link-title">
+            <?= htmlspecialchars($ad['title']) ?>
+        </a>
+    </h3>
 
-                    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $ad['user_id']): ?>
-                        <div style="display: flex; gap: 10px; margin-top: auto; border-top: 1px solid #e2e8f0; padding-top: 15px;">
-                            <a href="index.php?action=edit_ad&id=<?= $ad['id'] ?>" style="flex: 1; text-align: center; background-color: #fef3c7; color: #d97706; padding: 8px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: background 0.2s;">✏️ Modifier</a>
-                            <a href="index.php?action=delete_ad&id=<?= $ad['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?');" style="flex: 1; text-align: center; background-color: #fee2e2; color: #dc2626; padding: 8px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: background 0.2s;">🗑️ Supprimer</a>
-                        </div>
-                    <?php endif; ?>
-                </div>
+    <p class="category"><?= htmlspecialchars($ad['category_name']) ?></p>
+    <p class="price"><?= htmlspecialchars($ad['price']) ?> €</p>
+    <p style="color: #475569; font-size: 0.9rem;"><?= nl2br(htmlspecialchars(substr($ad['description'], 0, 80))) ?>...</p>
+
+    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $ad['user_id']): ?>
+        <div style="display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid #e2e8f0; padding-top: 10px; position: relative; z-index: 10;">
+            <a href="index.php?action=edit_ad&id=<?= $ad['id'] ?>" style="color: #d97706; text-decoration: none; font-size: 0.85rem; font-weight: 600;">✏️ Modifier</a>
+            <a href="index.php?action=delete_ad&id=<?= $ad['id'] ?>" onclick="return confirm('Supprimer ?');" style="color: #dc2626; text-decoration: none; font-size: 0.85rem; font-weight: 600;">🗑️ Supprimer</a>
+        </div>
+    <?php endif; ?>
+</div>
             <?php endforeach; ?>
         <?php endif; ?>
     </div>

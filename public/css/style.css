@@ -181,6 +181,26 @@ input:focus, select:focus, textarea:focus {
     }
 }
 
+/* Style pour le titre cliquable */
+.ad-link-title {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.2s ease;
+}
+
+.ad-link-title:hover {
+    color: var(--primary-color);
+}
+
+/* Effet sur l'image au survol */
+.ad-card .ad-img {
+    transition: opacity 0.3s ease;
+}
+
+.ad-card:hover .ad-img {
+    opacity: 0.8;
+}
+
 /* Décalage des animations pour un effet cascade */
 .ad-card:nth-child(1) { animation-delay: 0.1s; }
 .ad-card:nth-child(2) { animation-delay: 0.2s; }

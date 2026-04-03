@@ -9,8 +9,8 @@ require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../src/Controllers/AuthController.php';
 require_once __DIR__ . '/../src/Controllers/AdController.php'; 
 require_once __DIR__ . '/../src/Controllers/AdminController.php';
-$adminController = new AdminController($pdo);
 
+$adminController = new AdminController($pdo);
 $authController = new AuthController($pdo);
 $adController = new AdController($pdo); 
 
@@ -30,6 +30,12 @@ switch ($action) {
     case 'ads':
         $adController->index(); 
         break;
+
+    // --- NOUVELLE ROUTE : VUE DÉTAIL ---
+    case 'show_ad':
+        $adController->show(); 
+        break;
+
     case 'create_ad':
         $adController->create(); 
         break;
@@ -45,6 +51,7 @@ switch ($action) {
     case 'delete_ad':
         $adController->delete();
         break;
+
     // --- ROUTES ADMIN ---
     case 'admin_dashboard':
         $adminController->dashboard();
