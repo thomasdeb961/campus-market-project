@@ -1,5 +1,8 @@
 /* public/css/style.css */
 
+/* --- IMPORTATION DE LA POLICE --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 /* --- VARIABLES DE COULEURS (Facile à changer !) --- */
 :root {
     --primary-color: #2563eb; /* Bleu pro */
@@ -20,19 +23,26 @@
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    padding: 20px;
+    margin: 0;
+    padding: 0; /* On enlève le padding ici pour que ça touche bien les bords */
+    width: 100%; /* Force la largeur totale */
+}
+
+/* Container pour les pages de contenu (Annonces, Admin) */
+.container {
     max-width: 1200px;
-    margin: 0 auto; /* Centre le site sur les grands écrans */
+    margin: 0 auto;
 }
 
 h1, h2, h3 {
     color: var(--text-color);
     margin-bottom: 15px;
 }
+
 
 /* --- BOUTONS --- */
 .btn {
@@ -98,6 +108,10 @@ input:focus, select:focus, textarea:focus {
     border-radius: var(--radius);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    /* Animation d'apparition */
+    animation: fadeUp 0.6s ease-out forwards;
+    opacity: 0; 
 }
 
 .ad-card:hover {
@@ -154,3 +168,25 @@ input:focus, select:focus, textarea:focus {
         margin-bottom: 5px;
     }
 }
+
+/* --- ANIMATIONS PRO --- */
+@keyframes fadeUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Décalage des animations pour un effet cascade */
+.ad-card:nth-child(1) { animation-delay: 0.1s; }
+.ad-card:nth-child(2) { animation-delay: 0.2s; }
+.ad-card:nth-child(3) { animation-delay: 0.3s; }
+.ad-card:nth-child(4) { animation-delay: 0.4s; }
+.ad-card:nth-child(5) { animation-delay: 0.5s; }
+.ad-card:nth-child(6) { animation-delay: 0.6s; }
+.ad-card:nth-child(7) { animation-delay: 0.7s; }
+.ad-card:nth-child(8) { animation-delay: 0.8s; }
